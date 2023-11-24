@@ -5,14 +5,19 @@ body {
     height: 100vh;
     background: linear-gradient(to right, rgba(207, 172, 178,0.8), rgba(241, 241, 205, 0.5));
 }
-.note-list {
+
+body>div{
+    flex: 1;
+}
+
+.note-list, .todo-list {
     display: flex;
     flex-direction: column;
     flex: 1;
     margin: 10px;
     gap: 10px;
 }
-.write-note {
+.write-note, .write-todo {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -21,9 +26,10 @@ body {
 }
 textarea[name="description"] {
     border: 2px solid rgba(133, 115, 129, 0.4);
-    height: 900px;
+    height: 100px;
     font-size: 18px;
     border-radius: 5px;
+    resize: vertical;
 }
 textarea:focus {
     outline-width: 2px;
@@ -34,7 +40,7 @@ textarea:focus {
     border: 2px solid rgb(226, 216, 224);
     border-radius: 4px;
     padding: 5px;
-    min-height: 100px;
+    min-height: 70px;
     display: flex;
     flex-direction: column;
     color: white;
@@ -110,3 +116,4 @@ input:focus {
     display: flex;
     gap: 10px;
 }
+

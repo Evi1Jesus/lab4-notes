@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="note-list"></div>
-    <form class="write-note">
-        <input required placeholder="Название заметки" name="label" type="text">
-        <textarea required placeholder="Введите текст заметки..." name="description" ></textarea>
-        <div class="btns">
-            <button  class="btn" type="submit">Сохранить</button>
-            <button class="btn" type="reset">Удалить</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Note</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div>
+            <form class="write-note">
+                <input type="hidden" name="id">
+                <input required placeholder="Название заметки" name="label" type="text">
+                <textarea required placeholder="Введите текст заметки..." name="description" ></textarea>
+                <div class="btns">
+                    <button  class="btn" type="submit">Сохранить</button>
+                    <button class="btn" type="reset">Удалить</button>
+                </div>
+            </form>
+            <div class="note-list"></div>
         </div>
-    </form>
-    <script src="script.js"></script>
-</body>
+
+        <div>
+            <form class="write-todo">
+                <input type="hidden" name="id">
+                <input required placeholder="Название дела" name="label" type="text">
+                <textarea required placeholder="Введите текст дела..." name="description"></textarea>
+                <div>
+                    <input type="checkbox" name="done">
+                    <span>Выполнена</span>
+                </div>
+                <div class="btns">
+                    <button  class="btn" type="submit">Сохранить</button>
+                    <button class="btn" type="reset">Удалить</button>
+                </div>
+            </form>
+            <div class="todo-list"></div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
 </html>
