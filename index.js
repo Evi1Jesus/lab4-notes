@@ -28,26 +28,22 @@ app.get('/api/note', (request, response)=>{
 
 app.post('/api/note', (request, response)=>{
     const newNote = request.body
-    notes.push (newNote)
-    response.status(200)
-    response.header('Content-Type', 'application/json')
-    response.send(notes.length - 1)
+    newNote.date = new Date()
+    notes.push(newNote)
+    response.sendStatus(200)
 }) // написали обработчик post метода
 
-app.put('/api/note', (request, response) =>{
+app.put('/api/note', (request, response) => {
     const {noteId, ...newNote} = request.body
-    notes[noteId] = newNote
-    response.status(200)
-    response.header('Content-Type', 'application/json')
-    response.send('OK')
+    notes[noteId] = { ...notes[noteId], ...newNote }
+    console.log(notes)
+    response.sendStatus(200)
 })//написали обработчик put метода
 
-app.delete('/api/note', (request, response) =>{
+app.delete('/api/note', (request, response) => {
     const noteIndex = request.body.noteId
     notes.splice(noteIndex, 1)
-    response.status(200)
-    response.header('Content-Type', 'application/json')
-    response.send('OK')
+    response.sendStatus(200)
 }) //написали обработчик delete метода
 
 app.get('/api/todo', (request, response)=>{
@@ -58,33 +54,24 @@ app.get('/api/todo', (request, response)=>{
 
 app.post('/api/todo', (request, response)=>{
     const newToDo = request.body
-    toDos.push (newToDo)
-    response.status(200)
-    response.header('Content-Type', 'application/json')
-    response.send(toDos.length - 1)
+    toDos.push(newToDo)
+    response.sendStatus(200)
 }) // написали обработчик post метода
 
 app.put('/api/todo', (request, response) =>{
     const {toDoId, ...newToDo} = request.body
-    toDos[toDoId] = newToDo
-    response.status(200)
-    response.header('Content-Type', 'application/json')
-    response.send('OK')
+    toDos[toDoId] = { ...toDos[toDoId], ...newToDo }
+    response.sendStatus(200)
 })//написали обработчик put метода
 
 app.delete('/api/todo', (request, response) =>{
     const toDoIndex = request.body.toDoId
     toDos.splice(toDoIndex, 1)
-    response.status(200)
-    response.header('Content-Type', 'application/json')
-    response.send('OK')
+    response.sendStatus(200)
 }) //написали обработчик delete метода
 
-
-
-app.listen(80, (error)=>{
+app.listen(80, (error) => {
     if (!!error) {
         console.log('Ошибка запуска сервера')
     }
 }) // запускаем http сервер на 80 порту
-
