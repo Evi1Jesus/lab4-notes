@@ -14,10 +14,10 @@ const notes = [
 ]
 
 const toDos = [
-        { name: 'Дело 1', text: 'do1', date: new Date(), done: false},
-        { name: 'Дело 2', text: 'do2', date: new Date(), done: false},
-        { name: 'Дело 3', text: 'do3', date: new Date(), done: false},
-        { name: 'Дело 4', text: 'do4', date: new Date(), done: true},
+        { name: 'Дело 1', text: 'do1', done: false},
+        { name: 'Дело 2', text: 'do2', done: false},
+        { name: 'Дело 3', text: 'do3', done: false},
+        { name: 'Дело 4', text: 'do4', done: true},
 ]
 
 app.get('/api/note', (request, response)=>{
@@ -34,14 +34,13 @@ app.post('/api/note', (request, response)=>{
 }) // написали обработчик post метода
 
 app.put('/api/note', (request, response) => {
-    const {noteId, ...newNote} = request.body
-    notes[noteId] = { ...notes[noteId], ...newNote }
-    console.log(notes)
+    const {noteId, ...newNote} = request.body // разбиваем объект request.body на noteId и на остальную часть, которая будет положена в  newNote
+    notes[noteId] = { ...notes[noteId], ...newNote } // создаем новый объект из объекта массива note с номером noteId и объектом newNote(name, text)
     response.sendStatus(200)
 })//написали обработчик put метода
 
 app.delete('/api/note', (request, response) => {
-    const noteIndex = request.body.noteId
+    const noteIndex = request.body.noteId // кладем в noteIndex значение поля noteId из тела запроса
     notes.splice(noteIndex, 1)
     response.sendStatus(200)
 }) //написали обработчик delete метода
